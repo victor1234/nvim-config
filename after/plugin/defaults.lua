@@ -21,7 +21,14 @@ opt.signcolumn = "yes" -- Always show sign column
 opt.clipboard = "unnamedplus" -- Access system clipboard
 opt.laststatus = 3 -- Global statusline
 -- Time in milliseconds to wait for a mapped sequence to complete.
-opt.timeoutlen = 300
+opt.timeoutlen = 500
+-- Tune search 
+opt.path:remove "/usr/include"
+opt.path:append "**"
+opt.wildignorecase = true
+opt.wildignore:append "**/.idea/*"
+opt.wildignore:append "**/.git/*"
+opt.wildignore:append "**/build/*"
 
 -- Highlight on yank
 vim.cmd [[

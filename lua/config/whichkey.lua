@@ -34,6 +34,7 @@ function M.setup()
       name = "Packer",
       c = { "<cmd>PackerCompile<cr>", "Compile" },
       i = { "<cmd>PackerInstall<cr>", "Install" },
+			p = { "<cmd>PackerProfile<cr>", "Profile" },
       s = { "<cmd>PackerSync<cr>", "Sync" },
       S = { "<cmd>PackerStatus<cr>", "Status" },
       u = { "<cmd>PackerUpdate<cr>", "Update" },
@@ -45,14 +46,16 @@ function M.setup()
       s = { "<cmd>Neogit<CR>", "Status" },
     },
 
-		-- NVim Tree
+		-- Telescope
 		f = {
 			name = "Find",
 			f = { "<cmd>lua require('utils.finder').find_files()<cr>", "Files" },
-			b = { "<cmd>FzfLua buffers<cr>", "Buffers" },
-			o = { "<cmd>FzfLua oldfiles<cr>", "Old files" },
-			g = { "<cmd>FzfLua live_grep<cr>", "Live grep" },
-			c = { "<cmd>FzfLua commands<cr>", "Commands" },
+			b = { "<cmd>Telescope buffers<cr>", "Buffers" },
+			o = { "<cmd>Telescope oldfiles<cr>", "Old Files" },
+			g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
+			c = { "<cmd>Telescope commands<cr>", "Commands" },
+			r = { "<cmd>Telescope file_browser<cr>", "Browser" },
+			w = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Current Buffer" },
 			e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
 		},
   }
