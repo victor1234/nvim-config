@@ -29,6 +29,8 @@ opt.wildignorecase = true
 opt.wildignore:append "**/.idea/*"
 opt.wildignore:append "**/.git/*"
 opt.wildignore:append "**/build/*"
+-- Session
+opt.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 
 -- Highlight on yank
 vim.cmd [[

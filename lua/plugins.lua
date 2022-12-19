@@ -57,6 +57,14 @@ function M.setup()
       end,
     }
 
+		-- Startup screen
+    use {
+      "goolord/alpha-nvim",
+      config = function()
+        require("config.alpha").setup()
+      end,
+    }
+
     -- Git
     use {
       "TimUntersberger/neogit",
@@ -73,6 +81,16 @@ function M.setup()
 		  config = function()
 			  require("config.whichkey").setup()
 		  end,
+		}
+
+		-- Lualine
+		use {
+			"nvim-lualine/lualine.nvim",
+			event = "VimEnter",
+			config = function()
+			 require("config.lualine").setup()
+			end,
+			requires = { "nvim-web-devicons", opt = true },
 		}
 
 		-- Load only when require
@@ -129,17 +147,23 @@ function M.setup()
 			"neovim/nvim-lspconfig",
 			opt = true,
 			event = "BufReadPre",
-			wants = { "nvim-lsp-installer", "lsp_signature.nvim", "coq_nvim" },
+			wants = {
+				"nvim-lsp-installer",
+				"lsp_signature.nvim",
+				"coq_nvim",
+				"neodev.nvim",
+			},
 			config = function()
 				require("config.lsp").setup()
 			end,
 			requires = {
 				"williamboman/nvim-lsp-installer",
 				"ray-x/lsp_signature.nvim",
+				"folke/neodev.nvim",
 			},
 		}
 
-
+		-- Copilot
 		use {
 			"github/copilot.vim",
 			event = "InsertEnter",
@@ -149,6 +173,7 @@ function M.setup()
 		-- Telescope
 		use {
 			"nvim-telescope/telescope.nvim",
+			tag = '0.1.0',
 			opt = true,
 			config = function()
 				require("config.telescope").setup()
@@ -160,24 +185,24 @@ function M.setup()
 				"plenary.nvim",
 				"popup.nvim",
 				"telescope-fzf-native.nvim",
-				-- "telescope-project.nvim",
-				-- "telescope-repo.nvim",
+				"telescope-project.nvim",
+				"telescope-repo.nvim",
 				"telescope-file-browser.nvim",
-				-- "project.nvim",
+				"project.nvim",
 			},
 			requires = {
 				"nvim-lua/popup.nvim",
 				"nvim-lua/plenary.nvim",
 				{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-				-- "nvim-telescope/telescope-project.nvim",
-				-- "cljoly/telescope-repo.nvim",
+				"nvim-telescope/telescope-project.nvim",
+				"cljoly/telescope-repo.nvim",
 				"nvim-telescope/telescope-file-browser.nvim",
-				-- {
-				-- 	"ahmedkhalf/project.nvim",
-				-- 	config = function()
-				-- 		require("project_nvim").setup {}
-				-- 	end,
-				-- },
+				{
+					"ahmedkhalf/project.nvim",
+					config = function()
+						require("project_nvim").setup {}
+					end,
+				},
 			},
 		}
 

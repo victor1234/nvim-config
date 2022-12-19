@@ -29,15 +29,17 @@ function M.setup()
       D = { "<Cmd>%bd|e#|bd#<Cr>", "Delete all buffers" },
     },
 
-		-- Packer
+		-- System
     z = {
-      name = "Packer",
+      name = "System",
       c = { "<cmd>PackerCompile<cr>", "Compile" },
       i = { "<cmd>PackerInstall<cr>", "Install" },
 			p = { "<cmd>PackerProfile<cr>", "Profile" },
       s = { "<cmd>PackerSync<cr>", "Sync" },
       S = { "<cmd>PackerStatus<cr>", "Status" },
       u = { "<cmd>PackerUpdate<cr>", "Update" },
+			W = { "<cmd>lua require('utils.session').toggle_session()<cr>", "Toggle Workspace Saving" },
+			w = { "<cmd>lua require('utils.session').list_session()<cr>", "Restore Workspace" },
     },
 
 		-- Neogit
@@ -58,6 +60,11 @@ function M.setup()
 			w = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Current Buffer" },
 			e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
 		},
+		p = {
+			name = "Project",
+			p = { "<cmd>lua require'telescope'.extensions.project.project{}<cr>", "List" },
+			s = { "<cmd>Telescope repo list<cr>", "Search" },
+		}
   }
 
   whichkey.setup(conf)
