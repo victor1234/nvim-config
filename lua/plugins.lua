@@ -83,6 +83,16 @@ function M.setup()
 		  end,
 		}
 
+		-- -- Buffer line
+		use {
+			"akinsho/bufferline.nvim",
+			event = "BufReadPre",
+			wants = "nvim-web-devicons",
+			config = function()
+				require("config.bufferline").setup()
+			end,
+		}
+
 		-- Lualine
 		use {
 			"nvim-lualine/lualine.nvim",
