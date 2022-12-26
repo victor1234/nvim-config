@@ -158,7 +158,8 @@ function M.setup()
 			opt = true,
 			event = "BufReadPre",
 			wants = {
-				"nvim-lsp-installer",
+				"mason.nvim",
+				"mason-lspconfig.nvim",
 				"lsp_signature.nvim",
 				"coq_nvim",
 				"neodev.nvim",
@@ -167,7 +168,8 @@ function M.setup()
 				require("config.lsp").setup()
 			end,
 			requires = {
-				"williamboman/nvim-lsp-installer",
+				"williamboman/mason.nvim",
+				"williamboman/mason-lspconfig.nvim",
 				"ray-x/lsp_signature.nvim",
 				"folke/neodev.nvim",
 			},

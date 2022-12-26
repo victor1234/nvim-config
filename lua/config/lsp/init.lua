@@ -1,37 +1,5 @@
 local M = {}
 
-local servers = {
-	clangd = {capabilities = {offsetEncoding = "utf-8"}},
-	cmake = {},
-  html = {},
-  jsonls = {},
-  pyright = {},
-  sumneko_lua = {
-    settings = {
-      Lua = {
-        runtime = {
-          -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-          version = "LuaJIT",
-          -- Setup your lua path
-          path = vim.split(package.path, ";"),
-        },
-        diagnostics = {
-          -- Get the language server to recognize the `vim` global
-          globals = { "vim" },
-        },
-        workspace = {
-          -- Make the server aware of Neovim runtime files
-          library = {
-            [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-            [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
-          },
-        },
-      },
-    },
-  },
-  vimls = {},
-}
-
 local lsp_signature = require "lsp_signature"
 lsp_signature.setup {
   bind = true,
@@ -53,15 +21,48 @@ local function on_attach(client, bufnr)
   require("config.lsp.keymaps").setup(client, bufnr)
 end
 
-local opts = {
-  on_attach = on_attach,
-  flags = {
-    debounce_text_changes = 150,
-  },
-}
 
 function M.setup()
-  require("config.lsp.installer").setup(servers, opts)
+	require("mason").setup()
+
+	local automatic_installation = true
+	if vim.loop.os_uname() then
+		automatic_installation = { exclude = { "clangd" } }
+	end
+	require("mason-lspconfig").setup{
+		automatic_installation = automatic_installation,
+	}
+
+	require"lspconfig".sumneko_lua.setup{
+		on_attach = on_attach,
+    settings = {
+      Lua = {
+        runtime = {
+          -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+          version = "LuaJIT",
+          -- Setup your lua path
+          path = vim.split(package.path, ";"),
+        },
+        diagnostics = {
+          -- Get the language server to recognize the `vim` global
+          globals = { "vim" },
+        },
+        workspace = {
+          -- Make the server aware of Neovim runtime files
+          library = {
+            [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+            [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+          },
+        },
+      },
+		}
+	}
+
+	require 'lspconfig'.clangd.setup{
+		on_attach = on_attach,
+		capabilities = {offsetEncoding = "utf-8"},
+	}
+
 end
 
 return M
