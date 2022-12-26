@@ -1,5 +1,7 @@
 local M = {}
 
+local coq = require "coq"
+
 local lsp_signature = require "lsp_signature"
 lsp_signature.setup {
   bind = true,
@@ -33,34 +35,41 @@ function M.setup()
 		automatic_installation = automatic_installation,
 	}
 
+	require "neodev".setup()
+
 	require"lspconfig".sumneko_lua.setup{
-		on_attach = on_attach,
-    settings = {
-      Lua = {
-        runtime = {
-          -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-          version = "LuaJIT",
-          -- Setup your lua path
-          path = vim.split(package.path, ";"),
-        },
-        diagnostics = {
-          -- Get the language server to recognize the `vim` global
-          globals = { "vim" },
-        },
-        workspace = {
-          -- Make the server aware of Neovim runtime files
-          library = {
-            [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-            [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
-          },
-        },
-      },
+		coq.lsp_ensure_capabilities{
+			on_attach = on_attach,
+			settings = {
+				Lua = {
+					runtime = {
+						-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+						version = "LuaJIT",
+						-- Setup your lua path
+						path = vim.split(package.path, ";"),
+					},
+					diagnostics = {
+						-- Get the language server to recognize the `vim` global
+						globals = { "vim" },
+					},
+					workspace = {
+						-- Make the server aware of Neovim runtime files
+						library = {
+							[vim.fn.expand "$VIMRUNTIME/lua"] = true,
+							[vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+						},
+						checkThirdParty = false,
+					},
+				},
+			}
 		}
 	}
 
 	require 'lspconfig'.clangd.setup{
-		on_attach = on_attach,
-		capabilities = {offsetEncoding = "utf-8"},
+		coq.lsp_ensure_capabilities{
+			on_attach = on_attach,
+			capabilities = {offsetEncoding = "utf-8"},
+		}
 	}
 
 end
