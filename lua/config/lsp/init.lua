@@ -45,7 +45,7 @@ function M.setup()
 	require "neodev".setup()
 
 	require"lspconfig".sumneko_lua.setup{
-		coq.lsp_ensure_capabilities{
+		-- coq.lsp_ensure_capabilities{
 			on_attach = on_attach,
 			settings = {
 				Lua = {
@@ -69,14 +69,14 @@ function M.setup()
 					},
 				},
 			}
-		}
+		-- }
 	}
 
 	require 'lspconfig'.clangd.setup{
-		coq.lsp_ensure_capabilities{
+		-- coq.lsp_ensure_capabilities{
 			on_attach = on_attach,
 			capabilities = {offsetEncoding = "utf-8"},
-		}
+		-- }
 	}
 
 end
