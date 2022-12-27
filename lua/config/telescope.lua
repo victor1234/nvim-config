@@ -5,6 +5,11 @@ function M.setup()
   local telescope = require "telescope"
 
   telescope.setup {
+		extensions = {
+			["ui-select"] = {
+				require("telescope.themes").get_dropdown {}
+			}
+		},
     defaults = {
       mappings = {
         i = {
@@ -18,6 +23,7 @@ function M.setup()
   }
 
   telescope.load_extension "fzf"
+	telescope.load_extension "ui-select"
   telescope.load_extension "project" -- telescope-project.nvim
   telescope.load_extension "repo"
   telescope.load_extension "file_browser"

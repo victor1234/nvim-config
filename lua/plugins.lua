@@ -210,6 +210,7 @@ function M.setup()
 				"telescope-project.nvim",
 				"telescope-repo.nvim",
 				"telescope-file-browser.nvim",
+				"telescope-ui-select.nvim",
 				"project.nvim",
 			},
 			requires = {
@@ -217,6 +218,7 @@ function M.setup()
 				"nvim-lua/plenary.nvim",
 				{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
 				"nvim-telescope/telescope-project.nvim",
+				'nvim-telescope/telescope-ui-select.nvim' ,
 				"cljoly/telescope-repo.nvim",
 				"nvim-telescope/telescope-file-browser.nvim",
 				{

@@ -19,17 +19,17 @@ local function keymappings(client, bufnr)
   local keymap_l = {
     l = {
       name = "Code",
-      a = { "<cmd>Telescope lsp_code_actions<CR>", "Code Action" },
+      a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
       d = { "<cmd>Telescope diagnostics<CR>", "Diagnostics" },
       i = { "<cmd>LspInfo<CR>", "Lsp Info" },
-      R = { "<cmd>Telescope lsp_references<CR>", "Diagnostics" },
-      s = { "<cmd>Telescope lsp_document_symbols<CR>", "Diagnostics" },
+      R = { "<cmd>Telescope lsp_references<CR>", "References" },
+      s = { "<cmd>Telescope lsp_document_symbols<CR>", "Symbols" },
       r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
     },
   }
-  if client.server_capabilities.document_formatting then
-    keymap_l.l.f = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "Format Document" }
-  end
+  -- if client.server_capabilities.document_formatting then
+    keymap_l.l.f = { "<cmd>lua vim.lsp.buf.format()<CR>", "Format Document" }
+  -- end
 
   local keymap_g = {
     name = "Goto",
