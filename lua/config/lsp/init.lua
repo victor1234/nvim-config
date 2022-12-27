@@ -27,6 +27,13 @@ end
 function M.setup()
 	require("mason").setup()
 
+	-- require("mason-null-ls").setup{
+	-- 	automatic_installation = true,
+	-- }
+
+	-- require("config.lsp.null-ls").setup(on_attach)
+
+
 	local automatic_installation = true
 	if vim.loop.os_uname() then
 		automatic_installation = { exclude = { "clangd" } }

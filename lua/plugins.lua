@@ -163,6 +163,8 @@ function M.setup()
 				"lsp_signature.nvim",
 				"coq_nvim",
 				"neodev.nvim",
+				"null-ls.nvim",
+				"mason-null-ls.nvim",
 			},
 			config = function()
 				require("config.lsp").setup()
@@ -172,6 +174,14 @@ function M.setup()
 				"williamboman/mason-lspconfig.nvim",
 				"ray-x/lsp_signature.nvim",
 				"folke/neodev.nvim",
+				"jose-elias-alvarez/null-ls.nvim",
+				{
+					"j-hui/fidget.nvim",
+					config = function()
+						require("fidget").setup {}
+					end,
+				},
+				"jayp0521/mason-null-ls.nvim",
 			},
 		}
 
