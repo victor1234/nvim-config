@@ -88,6 +88,8 @@ function M.setup()
 		capabilities = { offsetEncoding = "utf-8" },
 	}
 
+	require'lspconfig'.yamlls.setup{}
+
 
 end
 
