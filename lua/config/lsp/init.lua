@@ -43,7 +43,7 @@ function M.setup()
 
 	require "neodev".setup()
 
-	require "lspconfig".sumneko_lua.setup {
+	require "lspconfig".lua_ls.setup {
 		-- coq.lsp_ensure_capabilities{
 		on_attach = on_attach,
 		settings = {

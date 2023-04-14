@@ -193,24 +193,24 @@ function M.setup()
 		}
 
 		-- DAP
-		use {
-			"mfussenegger/nvim-dap",
-			-- opt = true,
-			event = "BufReadPre",
-			module = { "dap" },
-			wants = { "nvim-dap-virtual-text", "nvim-dap-ui" },
-			wants = { "which-key.nvim", "nvim-dap-python" },
-			requires = {
-				"theHamsta/nvim-dap-virtual-text",
-				"rcarriga/nvim-dap-ui",
-				"mfussenegger/nvim-dap-python",
-				"nvim-telescope/telescope-dap.nvim",
-			-- 	{ "jbyuki/one-small-step-for-vimkind", module = "osv" },
-			},
-			config = function()
-				require("config.dap").setup()
-			end,
-		}
+		-- use {
+		-- 	"mfussenegger/nvim-dap",
+		-- 	-- opt = true,
+		-- 	event = "BufReadPre",
+		-- 	module = { "dap" },
+		-- 	wants = { "nvim-dap-virtual-text", "nvim-dap-ui" },
+		-- 	wants = { "which-key.nvim", "nvim-dap-python" },
+		-- 	requires = {
+		-- 		"theHamsta/nvim-dap-virtual-text",
+		-- 		"rcarriga/nvim-dap-ui",
+		-- 		"mfussenegger/nvim-dap-python",
+		-- 		"nvim-telescope/telescope-dap.nvim",
+		-- 	-- 	{ "jbyuki/one-small-step-for-vimkind", module = "osv" },
+		-- 	},
+		-- 	config = function()
+		-- 		require("config.dap").setup()
+		-- 	end,
+		-- }
 
 		-- Telescope
 		use {
